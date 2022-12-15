@@ -6,7 +6,7 @@ const today = new Date();
 var weekday = today.toLocaleString("en-GB", { weekday: "short" }).toLowerCase();
 
 // Apply json file
-fetch('../data.json')
+fetch('./data.json')
     .then((response) => response.json())
     .then((json) => {
         let days = json.map(item => item["day"]);
