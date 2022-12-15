@@ -1,0 +1,190 @@
+// Colors
+$soft-red: hsl(10, 79%, 65%);
+$soft-red-over: hsl(10deg 100% 76%);
+$cyan: hsl(186, 34%, 60%);
+$cyan-over: hsl(187, 49%, 80%);
+$dark-brown: hsl(25, 47%, 15%);
+$medium-brown: hsl(28, 10%, 53%);
+$cream: hsl(27, 66%, 92%);
+$very-pale-orange: hsl(33, 100%, 98%);
+
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+@mixin radius($radius: 0){
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $cream;
+}
+
+.expenses-chart {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 540px;
+    min-width: 250px;
+    font: 400 18px 'DM Sans', sans-serif;
+    margin: 10px 6%;
+    
+    .top {
+        font-size: 80%;
+        margin-bottom: 1rem;
+        @include radius(10px);
+        background: $soft-red url('../images/logo.svg') no-repeat right 7% center;
+        background-size: 60px;
+        color: $very-pale-orange;
+        line-height: 1em;
+        padding: 1.5rem 7%; 
+        .label {
+            margin-bottom: 0.8em;
+        }
+        .amount {
+            font-weight: 700;
+            font-size: 175%;
+            line-height: 1em;
+        }
+    }
+    .main {
+        font-size: 80%;
+        background-color: $very-pale-orange;
+        padding: 1.7rem 7% 1.2rem; 
+        @include radius(10px);
+        color: $medium-brown;
+    }
+    .header {
+        margin: 0 0 0.3em 0;
+        padding: 0;
+        font-weight: 700;
+        font-size: 178%;
+        line-height: 1.1em;
+        color: $dark-brown;
+    }
+
+    .chart {
+        margin-bottom: 1.7em;
+    }
+    .bars {
+        padding-top: 50px;
+        box-sizing: content-box;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+        gap: 0.8em;
+    }
+    .column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-end;
+        max-width: 50px;
+        text-align: center;
+    }   
+    .bar {
+        background-color: $soft-red;
+        @include radius(5px);
+        cursor: pointer;
+        flex-basis: 0;
+        position: relative;
+        transition: background-color 0.3s ease-in-out;
+        span {
+            display: block;
+            position: absolute;
+            top: - 3em;
+            left: 50%;
+            transform: translate(-50%, 0);
+            background-color: $dark-brown;
+            color: $very-pale-orange;
+            font-size: 90%;      
+            line-height: 1em;
+            padding: 0.75em;     
+            @include radius(5px); 
+            &::before { content: '$'; }
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 1000;
+        }
+        &:hover {
+            background-color: $soft-red-over;
+            span { opacity: 1; }
+        }
+    }
+    .current .bar {
+        background-color: $cyan;
+        &:hover { background-color: $cyan-over; }
+    }
+    .days {
+        font-size: 90%;
+        line-height: 1em;
+        display: flex;
+        justify-content: space-between;
+        gap: 0.3em;
+        text-align: center;
+        margin-top: 10px;
+        div { 
+            flex: 1; 
+            max-width: 50px;
+        }
+    }
+    
+    .summary {
+        border-top: 2px solid $cream;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2em;
+        padding-top: 1.8em;
+        line-height: 1em;
+        margin-bottom: 0.7em;
+        & > div:last-child {
+            text-align: right;
+            padding-bottom: 0.25em;
+        }
+    }
+    .total {
+        font-weight: 700;
+        font-size: 210%;
+        color: $dark-brown;
+        line-height: 1em;
+        margin-top: 0.3em;
+    }
+    .change {
+        font-weight: 700;
+        color: $dark-brown;
+        line-height: 1em;
+        margin-bottom: 0.4em;
+    }
+}
+
+@media only screen and (min-width: 576px) {
+    .expenses-chart {
+        .top {
+            font-size: 100%;
+            padding: 32px 35px 30px; 
+            background-size: auto;
+            background-position: right 30px center;
+            @include radius(20px);
+            margin-bottom: 1.5rem;
+        }
+        .main {
+            font-size: 100%;
+            @include radius(20px);
+            padding: 35px 40px;
+        }
+        .bars {
+            padding-top: 60px;
+        }
+        .total {
+            font-size: 270%;
+        }
+    }
+}
+  
