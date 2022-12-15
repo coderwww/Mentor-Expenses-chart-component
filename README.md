@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [https://coderwww.github.io/](https://coderwww.github.io/)
+- Solution URL: [https://github.com/coderwww/Mentor-Expenses-chart-component](https://github.com/coderwww/Mentor-Expenses-chart-component)
+- Live Site URL: [https://coderwww.github.io/Mentor-Expenses-chart-component](https://coderwww.github.io/Mentor-Expenses-chart-component)
 
 ## My process
 
